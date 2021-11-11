@@ -1,0 +1,68 @@
+﻿@{ ViewData["Title"] = "Login";
+    Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Creativa | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page" onload="disableBackButton();">
+    <div class="login-box">
+        <div class="login-logo">
+            <a><b>Admin</b>Creativa</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Inicia sesion con tu cuenta</p>
+                @ViewBag.Message
+                @ViewBag.Error
+                <form method="post" asp-controller="Account" asp-action="Login">
+                    <table border="0" cellpadding="2" cellspacing="2" class="table">
+                        <tr>
+                            <td><label class="control-label">Usuario</label></td>
+                            <td><input type="text" name="username" class="form-control" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label class="control-label">Contraseña</label></td>
+                            <td><input type="password" name="password" class="form-control" required /></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                            <td><input type="submit" value="Iniciar Sesion" class="btn btn-default"></td>
+                        </tr>
+                    </table>
+                </form>
+                <p class="mb-1">
+                <p>
+                    <a asp-action="StarRecovery" asp-controller="Account" class="btn btn-block btn-warning">Olvide mi contraseña</a>
+                </p>
+
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Http;
+@model IEnumerable<Solicitude>
+
+@{
+
+}
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <h4>Solicitudes de bonificacion</h4>
+            <hr />
+            <form action="/" method="post">
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th>ID Bonificacion</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Mes</th>
+                            <th>Estado</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model.Any())
+                        {
+                            @foreach (var s in Model)
+                            {
+                                <tr>
+                                    <th scope="row">@s.Id</th>
+                                    <td>@s.Name</td>
+                                    <td>@s.Lastname</td>
+                                    <td>@s.Mes</td>
+                                    <td>@s.Estado</td>
+                                    <td>
+                                        <a href="@Url.Action("VerBonif","Home", new { id = s.Id })" class="btn btn-outline-info">VER</a>
+                                        <a href="@Url.Action("AceptarBonif","Home", new { id = s.Id })" class="btn btn-outline-success">Aceptar</a>
+                                        <a href="@Url.Action("BorrarBonif","Home", new { id = s.Id })" class="btn btn-outline-danger">Borrar</a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <th scope="row">No hay registros</th>
+                            </tr>
+                        }
+                </table>
+            </form>
+        </div>
+    </div>
+</div>

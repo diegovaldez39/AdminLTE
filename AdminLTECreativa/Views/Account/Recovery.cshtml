@@ -1,0 +1,72 @@
+﻿@model AdminLTECreativa.Models.ViewModel.RecoveryPasswordViewModel
+@{ ViewData["Title"] = "Nueva Contraseña";
+    Layout = null; }
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Creativa | Log in</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+    <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <!-- icheck bootstrap -->
+    <link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+    <!-- Google Font: Source Sans Pro -->
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+<body class="hold-transition login-page" onload="disableBackButton();">
+    <div class="login-box">
+        <div class="login-logo">
+            <a><b>Admin</b>Creativa</a>
+        </div>
+        <!-- /.login-logo -->
+        <div class="card">
+            <div class="card-body login-card-body">
+                <p class="login-box-msg">Recuperacion de contraseña! </p>
+                <form action="@Url.Content("~/Account/Recovery")" method="post">
+                    @Html.HiddenFor(d => d.token)
+                    <table border="0" cellpadding="2" cellspacing="2" class="table">
+                        <tr>
+                            <td>
+                                <label class="control-label">Escriba su nueva contraseña</label>
+                                @Html.PasswordFor(d => d.Password, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.Password, null, new { @class = "alert-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label class="control-label">Repita contraseña</label>
+                                @Html.PasswordFor(d => d.rePassword, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(d => d.rePassword, null, new { @class = "alert-danger" })
+                            </td>
+                        </tr>
+                        <tr>
+                            <td><input type="submit" value="Enviar" class="btn btn-default"></td>
+                        </tr>
+                    </table>
+                </form>
+                <p class="mb-1">
+                    <a href="@Url.Action("Login","Account")" class="btn btn-block btn-warning">Inicio de sesion</a>
+                </p>
+
+            </div>
+            <!-- /.login-card-body -->
+        </div>
+    </div>
+    <!-- /.login-box -->
+    <!-- jQuery -->
+    <script src="~/plugins/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- AdminLTE App -->
+    <script src="~/dist/js/adminlte.min.js"></script>
+
+</body>
+</html>
